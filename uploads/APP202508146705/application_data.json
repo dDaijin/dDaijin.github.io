@@ -1,0 +1,46 @@
+{
+    "applicationId": "APP202508146705",
+    "timestamp": "2025-08-14 16:22:03",
+    "personalData": {
+        "fullName": "Ярослав Яковченко",
+        "dni": "X1234567A",
+        "phone": "+380505421181",
+        "email": "1111@gmail.com",
+        "birthDate": "",
+        "monthlyIncome": "",
+        "address": "",
+        "acceptMarketing": "Sí"
+    },
+    "loanData": {
+        "amount": "300",
+        "term": "42",
+        "returnAmount": "301.70",
+        "returnDate": "jue, 25\/09\/2025"
+    },
+    "uploadedFiles": {
+        "dnifront": [
+            {
+                "original_name": "test.jpg",
+                "saved_name": "dnifront_0_1755177722.jpg",
+                "path": "uploads\/APP202508146705\/dnifront_0_1755177722.jpg",
+                "size": 22187
+            }
+        ],
+        "dniback": [
+            {
+                "original_name": "test.jpg",
+                "saved_name": "dniback_0_1755177722.jpg",
+                "path": "uploads\/APP202508146705\/dniback_0_1755177722.jpg",
+                "size": 22187
+            }
+        ],
+        "income": [
+            {
+                "original_name": "test.jpg",
+                "saved_name": "income_0_1755177722.jpg",
+                "path": "uploads\/APP202508146705\/income_0_1755177722.jpg",
+                "size": 22187
+            }
+        ]
+    }
+}
