@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RateFeed — Live Currency &amp; Crypto Parser</title>
+<meta name="description" content="A single-page JavaScript demo that fetches and parses live exchange-rate and cryptocurrency data from public JSON APIs — system fonts only, no build step.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <div class="brand">
+      <span class="brand__mark">{}</span>
+      <span class="brand__name">RateFeed</span>
+    </div>
+    <div class="header-status">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="status-text">connecting…</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="intro">
+    <p class="eyebrow">JS fetch + JSON.parse demo</p>
+    <h1>Two APIs. Zero backend. Live in your browser.</h1>
+    <p class="intro__lede">
+      This page calls two public, keyless JSON APIs directly from client-side JavaScript —
+      <a href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a> for
+      central-bank exchange rates and <a href="https://www.coingecko.com/en/api" target="_blank" rel="noopener">CoinGecko</a>
+      for crypto markets — parses the responses, and renders them below. Open the console
+      panel to watch each request happen in real time.
+    </p>
+    <div class="intro__actions">
+      <button id="refresh-btn" class="btn">↻ Refresh data</button>
+      <span class="intro__updated">Last updated: <span id="last-updated">—</span></span>
+    </div>
+  </section>
+
+  <!-- CONSOLE / SIGNATURE ELEMENT -->
+  <section class="console" aria-label="Request log">
+    <div class="console__bar">
+      <span class="console__dot console__dot--r"></span>
+      <span class="console__dot console__dot--y"></span>
+      <span class="console__dot console__dot--g"></span>
+      <span class="console__title">parser.log</span>
+    </div>
+    <pre class="console__body" id="console-body"><span class="console__hint">// waiting for requests…</span></pre>
+  </section>
+
+  <div class="panels">
+
+    <!-- FIAT PANEL -->
+    <section class="panel" id="fiat-panel">
+      <div class="panel__head">
+        <div>
+          <p class="eyebrow eyebrow--fiat">Foreign exchange</p>
+          <h2>Major currencies</h2>
+        </div>
+        <label class="base-select">
+          Base
+          <select id="base-currency">
+            <option value="USD" selected>USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="UAH" disabled>UAH (unavailable)</option>
+          </select>
+        </label>
+      </div>
+
+      <table class="data-table" id="fiat-table">
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th>Code</th>
+            <th class="num">Rate</th>
+          </tr>
+        </thead>
+        <tbody id="fiat-tbody">
+          <tr class="skeleton-row"><td colspan="3">Loading exchange rates…</td></tr>
+        </tbody>
+      </table>
+      <p class="panel__source">Source: api.frankfurter.dev — European Central Bank reference rates, updated on business days.</p>
+    </section>
+
+    <!-- CRYPTO PANEL -->
+    <section class="panel" id="crypto-panel">
+      <div class="panel__head">
+        <div>
+          <p class="eyebrow eyebrow--crypto">Digital assets</p>
+          <h2>Top cryptocurrencies</h2>
+        </div>
+        <label class="base-select">
+          vs
+          <select id="crypto-vs">
+            <option value="usd" selected>USD</option>
+            <option value="eur">EUR</option>
+          </select>
+        </label>
+      </div>
+
+      <table class="data-table" id="crypto-table">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Symbol</th>
+            <th class="num">Price</th>
+            <th class="num">24h</th>
+          </tr>
+        </thead>
+        <tbody id="crypto-tbody">
+          <tr class="skeleton-row"><td colspan="4">Loading market data…</td></tr>
+        </tbody>
+      </table>
+      <p class="panel__source">Source: api.coingecko.com — keyless public market-data endpoint.</p>
+    </section>
+
+  </div>
+
+  <section class="how">
+    <p class="eyebrow">How the parsing works</p>
+    <div class="how__grid">
+      <article class="how__card">
+        <span class="how__num">01</span>
+        <h3>Fetch</h3>
+        <p><code>fetch()</code> requests JSON from both APIs in parallel with <code>Promise.all</code>.</p>
+      </article>
+      <article class="how__card">
+        <span class="how__num">02</span>
+        <h3>Parse</h3>
+        <p>Each response is decoded with <code>response.json()</code>, then reshaped into a flat array of rows.</p>
+      </article>
+      <article class="how__card">
+        <span class="how__num">03</span>
+        <h3>Render</h3>
+        <p>Rows are written into the DOM with <code>textContent</code> — no template engine, no framework.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p>Built with plain HTML, CSS and JavaScript — system fonts only, no build step, no framework.</p>
+    <p class="site-footer__meta">Data via Frankfurter &amp; CoinGecko public APIs. Rates are informational, not financial advice.</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
