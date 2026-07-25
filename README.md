@@ -1,7 +1,7 @@
 
 ```markdown
 # RateFeed — Live Currency & Crypto Parser
-https://ddaijin.github.io/
+
 A single-page JavaScript application that fetches data from two public, keyless JSON APIs entirely client-side, parses the payload asynchronously, and renders real-time data tables. Built with pure web standards: zero backend, no build tools, no external fonts, and no heavy frameworks — relying strictly on `fetch`, `async/await`, and native DOM manipulation.
 
 ---
@@ -179,10 +179,9 @@ Compatible with any static site host including GitHub Pages, Vercel, Netlify, or
 
 ---
 
-## License
+## Link
 
-MIT License
 
 ```
-
+https://ddaijin.github.io/
 ```
